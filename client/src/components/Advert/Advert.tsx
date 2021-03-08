@@ -1,5 +1,4 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
 import { AdvertDataType } from '../../Global/Actions/Advert/advertActionTypes'
 import {BiStore} from 'react-icons/bi'
 import {MdPersonPinCircle} from 'react-icons/md'

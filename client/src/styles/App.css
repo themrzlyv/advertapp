@@ -82,3 +82,20 @@ body {
     border-radius: 10px;
     object-fit: contain;
 }
+
+
+.search-input, 
+.search-input:focus {
+    font-size: 1em;
+    padding: 0.1em 0;
+    border-radius: 4px;
+    text-indent: 5px;
+    border: none !important;
+    outline: none !important;
+}
+
+.user-avatar {
+    width: 1.8em;
+    border-radius: 50px;
+    object-fit: contain;
+}

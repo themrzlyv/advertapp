@@ -1,4 +1,9 @@
+input::placeholder {
+    font-style: italic;
+}
+
 input:focus {
+    border-color: #ced4da !important;
     box-shadow: none !important;
 }
 

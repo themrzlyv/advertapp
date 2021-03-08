@@ -1,6 +1,7 @@
 import express, { Application } from 'express'
 import dotenv from 'dotenv'
 import cors from 'cors'
+import cookieParser from 'cookie-parser'
 import routes from './routes'
 import ConnectDb from './helpers/ConnectDb'
 
@@ -11,6 +12,7 @@ const app:Application = express()
 
 ConnectDb()
 
+app.use(cookieParser())
 app.use(express.json())
 app.use(cors())
 app.use("/api", routes)
