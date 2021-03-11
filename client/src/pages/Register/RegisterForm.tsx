@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import {Formik , Field , Form , ErrorMessage} from 'formik'
 import * as Yup from 'yup'
 import { uploadImage } from '../../helpers/Api/imageUploader'
+import { useToasts } from 'react-toast-notifications'
+import { postData } from '../../helpers/Api/fetchData'
 
 interface Iregister {
     name: string;
@@ -13,6 +15,8 @@ interface Iregister {
 
 const RegisterForm = () => {
 
+    const {addToast} = useToasts()
+
     const [media, setmedia] = useState<File | undefined>()
 
     const validationSchema = Yup.object({
@@ -23,8 +27,12 @@ const RegisterForm = () => {
         about: Yup.string().min(8,"About must be min 8").required("About is required")
     })
 
-    const costumSubmit = (data:Iregister):void => {
-        console.log(data)
+    const costumSubmit = async(data:Iregister):Promise<void | "/"> => {
+        const result = await postData(`/api/user/register` , data)
+        if(result.error){
+            return addToast(result.error , {appearance:'error',autoDismiss: true,})
+        }
+        return window.location.href = "/"
     }
 
 
@@ -96,7 +104,7 @@ const RegisterForm = () => {
                         }}
                         />
                         <ErrorMessage component="h6" name="avatar" className="fs-6 my-1 text-danger is-invalid"/>
-                        <img className=" img-fluid" src={media ? URL.createObjectURL(media) : ""} alt="avatar"/>
+                        <img className=" img-fluid" src={media ? URL.createObjectURL(media) : ""} alt=""/>
                     </div>
                     <div className="form-floating mb-3">
                         <Field

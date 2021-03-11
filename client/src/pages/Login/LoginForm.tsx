@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {Formik , Field , Form , ErrorMessage} from 'formik'
 import * as Yup from 'yup'
 import { postData } from '../../helpers/Api/fetchData'
 import { useToasts } from 'react-toast-notifications'
+import {AiOutlineEye} from 'react-icons/ai'
+import {AiOutlineEyeInvisible} from 'react-icons/ai'
 
 
 interface Ilogin {
@@ -11,6 +13,8 @@ interface Ilogin {
 }
 
 const LoginForm:React.FC = () => {
+
+    const [isVisible, setisVisible] = useState(false)
 
     const {addToast} = useToasts()
 
@@ -56,15 +60,21 @@ const LoginForm:React.FC = () => {
                         <label htmlFor="Your Email">Your Email</label>
                         <ErrorMessage component="h6" name="email" className="fs-6 my-1 text-danger is-invalid"/>
                     </div>
-                    <div className="form-floating mb-3">
+                    <div className="form-floating mb-3 position-relative">
                         <Field
                         as="input"
-                        type="password"
+                        type={isVisible === false ? "password" : "text"}
                         name="password"
                         className="form-control"
                         placeholder="Your Password"
                         autoComplete="off"
                         />
+                        {
+                            isVisible === false ? (<AiOutlineEye onClick={() => setisVisible(!isVisible)} fontSize={18} className="input-icon"/>)
+                            :
+                            (<AiOutlineEyeInvisible onClick={() => setisVisible(!isVisible)} fontSize={18} className="input-icon"/>)
+                        }
+                        
                         <label htmlFor="Your Password">Your Password</label>
                         <ErrorMessage component="h6" name="password" className="fs-6 my-1 text-danger is-invalid"/>
                     </div>

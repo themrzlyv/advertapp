@@ -31,7 +31,7 @@ const Navi = () => {
                 <li className="nav-item">
                     <NavLink className="nav-link d-flex align-items-center" to="/account">
                         <img className="user-avatar me-2" src={user.user?.avatar} alt={user.user?.name}/>
-                        Account
+                        {user.user?.name}
                     </NavLink>
                 </li>
                 <li className="nav-item">
