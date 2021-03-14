@@ -14,3 +14,15 @@ button:focus {
 .card {
     cursor: pointer;
 }
+
+tr {
+    transition: all .3s ease-in-out;
+}
+
+tbody > tr:hover {
+    color: white !important;
+    cursor: pointer;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    background-color: #fc6956;
+    transition: all .3s ease-in-out;
+}

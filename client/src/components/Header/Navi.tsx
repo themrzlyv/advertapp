@@ -34,6 +34,18 @@ const Navi = () => {
                         {user.user?.name}
                     </NavLink>
                 </li>
+                {
+                    user.user?.role !== false && user.user?.role !== undefined ?
+                    (
+                        <li className="nav-item">
+                            <NavLink className="nav-link d-flex align-items-center" to="/admin">
+                                Admin
+                            </NavLink>
+                        </li>
+                    )
+                    :
+                    null
+                }
                 <li className="nav-item">
                     <button 
                     onClick={handleLogout}

@@ -42,6 +42,10 @@ const AdvertSchema:Schema = new mongoose.Schema({
     facebook: {
         type:String,
         trim:true
+    },
+    checked: {
+        type:Boolean,
+        default: false
     }
 }, {timestamps:true})
 

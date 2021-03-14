@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getSingleAdvert } from '../../Global/Actions/Advert/advertAction'
 import { RootState } from '../../Global/Store'
@@ -9,6 +9,7 @@ const AdvertDetail = () => {
     const dispatch = useDispatch()
     const router = useRouter()
     const {id} = router.query
+
 
     const advert = useSelector((state:RootState) => state.adverts.advert)
 

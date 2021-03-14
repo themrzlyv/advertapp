@@ -7,7 +7,7 @@ import Advert from "../models/Advert";
 
 export const getAllAdverts = async (req:Request,res:Response) => {
     try {
-        const adverts = await Advert.find()
+        const adverts = await Advert.find({checked: true})
         return res.status(200).json({length: adverts.length, adverts})
     } catch (error) {
         return res.status(500).json(error.message)
@@ -74,7 +74,8 @@ export const updateAdvert = async(req:Request,res:Response) => {
             description,
             price,
             email,
-            facebook
+            facebook,
+            checked
         }:IadvertData = req.body
 
         const error = validateAdvert({title,image,tags,author,city,description,price,email})
@@ -89,7 +90,8 @@ export const updateAdvert = async(req:Request,res:Response) => {
             description,
             price,
             email,
-            facebook
+            facebook,
+            checked
         }, {
             new: true,
             runValidators: true
@@ -100,6 +102,8 @@ export const updateAdvert = async(req:Request,res:Response) => {
         return res.status(500).json(error.message)
     }
 }
+
+
 
 
 export const deleteAdvert = async(req:Request,res:Response) => {

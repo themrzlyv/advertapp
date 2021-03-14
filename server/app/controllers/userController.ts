@@ -142,6 +142,23 @@ export const updateInfo = async (req:Irequest,res:Response) => {
 }
 
 
+export const addFavorite = async (req:Irequest,res:Response) => {
+    try {
+        // getting data from request body
+        const {favorites} = req.body
+
+        // getting data without password
+        const user = await User.findById(req.user?.id).select('-password')
+
+        user.favorites.push(favorites)
+        await user.save()
+        res.status(200).json(user)
+    } catch (error) {
+        return res.status(500).json({error: error.message})
+    }
+}
+
+
 export const logout = async (req:Irequest,res:Response) => {
     try {
         // clearing cookie

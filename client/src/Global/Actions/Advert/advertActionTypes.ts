@@ -11,7 +11,8 @@ export type AdvertDataType = {
     description:string;
     price:string;
     email:string;
-    facebook:string
+    facebook:string;
+    checked:boolean
 }
 
 export interface GetAllAdverts {

@@ -3,7 +3,10 @@ import { AdvertDataType } from '../../Global/Actions/Advert/advertActionTypes'
 import {BiStore} from 'react-icons/bi'
 import {MdPersonPinCircle} from 'react-icons/md'
 import {BsArrowReturnRight} from 'react-icons/bs'
+import {MdFavoriteBorder} from 'react-icons/md'
 import { useRouter } from '../../helpers/hooks/useRouter'
+import { useDispatch } from 'react-redux'
+import { addFavorite } from '../../Global/Actions/User/userAction'
 
 
 
@@ -14,6 +17,7 @@ interface Iprops {
 
 const Advert:React.FC<Iprops> = ({data}) => {
     const router = useRouter()
+    const dispatch = useDispatch()
     return (
         <div 
         onClick={() => router.push(`/advert/${data._id}`)}
@@ -27,6 +31,11 @@ const Advert:React.FC<Iprops> = ({data}) => {
                         }
                         {data.author}
                     </span>
+                    <button 
+                    onClick={() => dispatch(addFavorite(data))}
+                    className="card-favorite">
+                        <MdFavoriteBorder fontSize={25} />
+                    </button>
                     <h5 className="fw-bold fs-6 border-bottom">Price: {data.price}</h5>
                     <h6 className="fw-normal fs-6">
                         <BsArrowReturnRight fontSize={15} className="mr-1"/>
